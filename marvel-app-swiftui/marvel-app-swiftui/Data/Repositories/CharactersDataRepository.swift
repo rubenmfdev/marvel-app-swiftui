@@ -6,26 +6,27 @@
 //
 
 import Foundation
+import Combine
 
 class CharactersDataRepository: CharactersRepository {
     
     // MARK: - Attributes
     
-    let dataSource: CharactersDataSource
+    let dataSource: CharactersNetworkDataSourceProtocol
     
     // MARK: - Initializer
     
-    init(dataSource: CharactersDataSource) {
+    init(dataSource: CharactersNetworkDataSourceProtocol) {
         self.dataSource = dataSource
     }
     
     // MARK: - CharactersRepository protocol
     
-    func getCharacters(filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void ) {
-        self.dataSource.getCharacters(filters: filters, completion: completion)
+    func getCharacters(filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never> {
+        self.dataSource.getCharacters(filters: filters)
     }
     
-    func getCharacterWithId(_ characterId: Int, filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void ) {
-        self.dataSource.getCharactersWithId(characterId, filters: filters, completion:  completion)
+    func getCharacterWithId(_ characterId: Int, filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never> {
+        self.dataSource.getCharactersWithId(characterId, filters: filters)
     }
 }

@@ -6,37 +6,22 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class CharacterEntity: NSObject, Mappable {
-    var id: Int?
-    var name: String?
-    var characterDescription: String?
-    var modified: String?
-    var resourceURI: String?
+struct CharacterEntity {
+    var id: Int
+    var name: String
+    var characterDescription: String
+    var modified: String
+    var resourceURI: String
     var urls: [UrlEntity]?
     var thumbnail: ImageEntity?
     var comics: ComicListEntity?
     var stories: StoryListEntity?
     var events: EventListEntity?
     var series: SeriesListEntity?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
     
-    public func mapping(map: Map) {
-        id                          <- map["id"]
-        name                        <- map["name"]
-        characterDescription        <- map["description"]
-        modified                    <- map["modified"]
-        resourceURI                 <- map["resourceURI"]
-        urls                        <- map["urls"]
-        thumbnail                   <- map["thumbnail"]
-        comics                      <- map["comics"]
-        stories                     <- map["stories"]
-        events                      <- map["events"]
-        series                      <- map["series"]
-
+    func thumbnailURL() -> String {
+        guard let thumbnail = self.thumbnail else { return "" }
+        return  "\(thumbnail.path ?? "").\(thumbnail.imageExtension ?? "")"
     }
 }

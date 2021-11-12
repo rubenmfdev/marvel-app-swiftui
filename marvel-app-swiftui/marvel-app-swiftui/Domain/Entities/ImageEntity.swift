@@ -6,18 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class ImageEntity: NSObject, Mappable {
-    var path: String?
-    var imageExtension: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        path                        <- map["path"]
-        imageExtension              <- map["extension"]
-    }
+struct ImageEntity {
+    var path: String
+    var imageExtension: String
 }

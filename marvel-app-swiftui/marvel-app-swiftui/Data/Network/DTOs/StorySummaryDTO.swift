@@ -6,27 +6,20 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class StorySummaryDTO: NSObject, Mappable {
+struct StorySummaryDTO: Decodable {
     var resourceURI: String?
     var name: String?
     var type: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        resourceURI                 <- map["resourceURI"]
-        name                        <- map["name"]
-        type                        <- map["type"]
-    }
 }
 
 extension StorySummaryDTO {
-    public func toDomain() -> StorySummaryEntity? {
-        return StorySummaryEntity(JSON: self.toJSON())
+    func toDomain() -> StorySummaryEntity {
+        return StorySummaryEntity(
+            resourceURI: self.resourceURI ?? "",
+            name: self.name ?? "",
+            type: self.type ?? ""
+        )
     }
 }
 

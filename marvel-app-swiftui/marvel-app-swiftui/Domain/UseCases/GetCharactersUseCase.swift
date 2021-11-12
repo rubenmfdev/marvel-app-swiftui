@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
-public protocol GetCharactersUseCaseProtocol {
-    func execute(input: GetCharactersUseCaseInput, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void)
+protocol GetCharactersUseCaseProtocol {
+    func execute(input: GetCharactersUseCaseInput) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never>
 }
 
 class GetCharactersUseCase: GetCharactersUseCaseProtocol {
@@ -25,11 +26,11 @@ class GetCharactersUseCase: GetCharactersUseCaseProtocol {
     
     // MARK: - GetCharactersUseCaseProtocol
     
-    func execute(input: GetCharactersUseCaseInput, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void) {
-        self.repository.getCharacters(filters: input.filters, completion: completion)
+    func execute(input: GetCharactersUseCaseInput) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never> {
+        self.repository.getCharacters(filters: input.filters)
     }
 }
 
-public struct GetCharactersUseCaseInput {
+struct GetCharactersUseCaseInput {
     let filters: CharacterFilterEntity
 }

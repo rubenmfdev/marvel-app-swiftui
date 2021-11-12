@@ -6,29 +6,30 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class SeriesListDTO: NSObject, Mappable {
+struct SeriesListDTO: Decodable {
     var available: Int?
     var returned: Int?
     var collectionURI: String?
     var items: [SeriesSummaryDTO]?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        available                   <- map["available"]
-        returned                    <- map["returned"]
-        collectionURI               <- map["collectionURI"]
-        items                       <- map["items"]
-    }
 }
 
 extension SeriesListDTO {
-    public func toDomain() -> SeriesListEntity? {
-        return SeriesListEntity(JSON: self.toJSON())
+    func toDomain() -> SeriesListEntity {
+        return SeriesListEntity(
+            available: self.available ?? 0,
+            returned: self.returned ?? 0,
+            collectionURI: self.collectionURI ?? "",
+            items: self.getItems()
+        )
+    }
+}
+
+private extension SeriesListDTO {
+    func getItems() -> [SeriesSummaryEntity]? {
+        self.items?.map({ dto in
+            dto.toDomain()
+        })
     }
 }
 

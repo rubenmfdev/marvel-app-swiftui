@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class CharacterFilterEntity: NSObject {
+struct CharacterFilterEntity {
     var name: String?
     var nameStartsWith: String?
     var modifiedSince: String?

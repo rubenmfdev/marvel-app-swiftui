@@ -6,19 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class SeriesSummaryEntity: NSObject, Mappable {
-    var resourceURI: String?
-    var name: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        resourceURI                 <- map["resourceURI"]
-        name                        <- map["name"]
-    }
+struct SeriesSummaryEntity {
+    var resourceURI: String
+    var name: String
 }
-

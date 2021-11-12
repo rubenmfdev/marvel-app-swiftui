@@ -6,28 +6,30 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class ComicListDTO: NSObject, Mappable {
+struct ComicListDTO: Decodable {
     var available: Int?
     var returned: Int?
     var collectionURI: String?
     var items: [ComicSummaryDTO]?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        available                   <- map["available"]
-        returned                    <- map["returned"]
-        collectionURI               <- map["collectionURI"]
-        items                       <- map["items"]
-    }
 }
 
 extension ComicListDTO {
-    public func toDomain() -> ComicListEntity? {
-        return ComicListEntity(JSON: self.toJSON())
+    func toDomain() -> ComicListEntity {
+        return ComicListEntity(
+            available: self.available ?? 0,
+            returned: self.returned ?? 0,
+            collectionURI: self.collectionURI ?? "",
+            items: self.getItems()
+        )
     }
 }
+
+private extension ComicListDTO {
+    func getItems() -> [ComicSummaryEntity]? {
+        self.items?.map({ dto in
+            dto.toDomain()
+        })
+    }
+}
+

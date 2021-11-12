@@ -6,47 +6,43 @@
 //
 
 import Foundation
+import Combine
 
-class CharactersNetworkDataSource: CharactersDataSource {
-    func getCharacters(filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void ) {
-        self.getCharactersAdapter(filters: filters) { result in
-            switch result {
-            case let .success(characterDataWrapperDTO):
-                if let entity = characterDataWrapperDTO.toDomain() {
-                    completion(.success(entity))
-                } else {
-                    completion(.failure(DataError.domainMappingError))
+protocol CharactersNetworkDataSourceProtocol {
+    func getCharacters(filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never>
+    func getCharactersWithId(_ characterId: Int, filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never>
+}
+
+class CharactersNetworkDataSource: CharactersNetworkDataSourceProtocol {
+    func getCharacters(filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never> {
+        self.getCharactersAdapter(filters: filters)
+            .map { result in
+                result.map { dto in
+                    dto.toDomain()
                 }
-            case let .failure(error):
-                completion(.failure(error))
             }
-        }
+            .eraseToAnyPublisher()
     }
     
-    func getCharactersWithId(_ characterId: Int, filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperEntity, Error>) -> Void ) {
-        self.getCharacterWithIdAdapter(characterId, filters: filters) { result in
-            switch result {
-            case let .success(characterDataWrapperDTO):
-                if let entity = characterDataWrapperDTO.toDomain() {
-                    completion(.success(entity))
-                } else {
-                    completion(.failure(DataError.domainMappingError))
+    func getCharactersWithId(_ characterId: Int, filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperEntity, ErrorEntity>, Never> {
+        self.getCharacterWithIdAdapter(characterId, filters: filters)
+            .map { result in
+                result.map { dto in
+                    dto.toDomain()
                 }
-            case let .failure(error):
-                completion(.failure(error))
             }
-        }
+            .eraseToAnyPublisher()
     }
 }
 
 private extension CharactersNetworkDataSource {
-    func getCharactersAdapter(filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperDTO, Error>) -> Void ) {
+    func getCharactersAdapter(filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperDTO, ErrorEntity>, Never>{
         let router = CharactersRouter(.character(filters: filters))
-        NetworkManager.shared().requestObject(router, completion: completion)
+        return NetworkManager.shared().requestObject(router)
     }
     
-    func getCharacterWithIdAdapter(_ characterId: Int, filters: CharacterFilterEntity, completion: @escaping (Result<CharacterDataWrapperDTO, Error>) -> Void ) {
+    func getCharacterWithIdAdapter(_ characterId: Int, filters: CharacterFilterEntity) -> AnyPublisher<Result<CharacterDataWrapperDTO, ErrorEntity>, Never> {
         let router = CharactersRouter(.characterWithId(characterId, filters: filters))
-        NetworkManager.shared().requestObject(router, completion: completion)
+        return NetworkManager.shared().requestObject(router)
     }
 }

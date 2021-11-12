@@ -6,23 +6,11 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class SeriesListEntity: NSObject, Mappable {
-    var available: Int?
-    var returned: Int?
-    var collectionURI: String?
+struct SeriesListEntity {
+    var available: Int
+    var returned: Int
+    var collectionURI: String
     var items: [SeriesSummaryEntity]?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        available                   <- map["available"]
-        returned                    <- map["returned"]
-        collectionURI               <- map["collectionURI"]
-        items                       <- map["items"]
-    }
 }
 

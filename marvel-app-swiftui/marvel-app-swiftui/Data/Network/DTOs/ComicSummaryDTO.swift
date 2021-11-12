@@ -6,25 +6,18 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class ComicSummaryDTO: NSObject, Mappable {
+struct ComicSummaryDTO: Decodable {
     var resourceURI: String?
     var name: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        resourceURI             <- map["resourceURI"]
-        name                    <- map["name"]
-    }
 }
 
 extension ComicSummaryDTO {
-    public func toDomain() -> ComicSummaryEntity? {
-        return ComicSummaryEntity(JSON: self.toJSON())
+    func toDomain() -> ComicSummaryEntity {
+        return ComicSummaryEntity(
+            resourceURI: self.resourceURI ?? "",
+            name: self.name ?? ""
+        )
     }
 }
 

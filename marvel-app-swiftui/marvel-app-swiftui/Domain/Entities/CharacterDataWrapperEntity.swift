@@ -6,29 +6,14 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class CharacterDataWrapperEntity: NSObject, Mappable {
-    var code: Int?
-    var status: String?
-    var copyright: String?
-    var attributionText: String?
-    var attributionHTML: String?
+struct CharacterDataWrapperEntity {
+    var code: Int
+    var status: String
+    var copyright: String
+    var attributionText: String
+    var attributionHTML: String
     var data: CharacterDataContainerEntity?
-    var etag: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        code                        <- map["code"]
-        status                      <- map["status"]
-        copyright                   <- map["copyright"]
-        attributionText             <- map["attributionText"]
-        attributionHTML             <- map["attributionHTML"]
-        data                        <- map["data"]
-        etag                        <- map["etag"]
-    }
+    var etag: String
 }
 

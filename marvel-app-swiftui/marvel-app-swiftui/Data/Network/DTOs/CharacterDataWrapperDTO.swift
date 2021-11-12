@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class CharacterDataWrapperDTO: NSObject, Mappable {
+struct CharacterDataWrapperDTO: Decodable {
     var code: Int?
     var status: String?
     var copyright: String?
@@ -16,25 +15,19 @@ public class CharacterDataWrapperDTO: NSObject, Mappable {
     var attributionHTML: String?
     var data: CharacterDataContainerDTO?
     var etag: String?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        code                        <- map["code"]
-        status                      <- map["status"]
-        copyright                   <- map["copyright"]
-        attributionText             <- map["attributionText"]
-        attributionHTML             <- map["attributionHTML"]
-        data                        <- map["data"]
-        etag                        <- map["etag"]
-    }
 }
 
 extension CharacterDataWrapperDTO {
-    public func toDomain() -> CharacterDataWrapperEntity? {
-        return CharacterDataWrapperEntity(JSON: self.toJSON())
+    func toDomain() -> CharacterDataWrapperEntity {
+        return CharacterDataWrapperEntity(
+            code: self.code ?? 0,
+            status: self.status ?? "",
+            copyright: self.copyright ?? "",
+            attributionText: self.attributionText ?? "",
+            attributionHTML: self.attributionHTML ?? "",
+            data: self.data?.toDomain(),
+            etag: self.etag ?? ""
+        )
     }
 }
 

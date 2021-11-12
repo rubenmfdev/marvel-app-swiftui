@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class CharacterDTO: NSObject, Mappable {
+struct CharacterDTO: Decodable {
     var id: Int?
     var name: String?
     var characterDescription: String?
@@ -20,29 +19,30 @@ public class CharacterDTO: NSObject, Mappable {
     var stories: StoryListDTO?
     var events: EventListDTO?
     var series: SeriesListDTO?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        id                          <- map["id"]
-        name                        <- map["name"]
-        characterDescription        <- map["description"]
-        modified                    <- map["modified"]
-        resourceURI                 <- map["resourceURI"]
-        urls                        <- map["urls"]
-        thumbnail                   <- map["thumbnail"]
-        comics                      <- map["comics"]
-        stories                     <- map["stories"]
-        events                      <- map["events"]
-        series                      <- map["series"]
-
-    }
 }
 
 extension CharacterDTO {
-    public func toDomain() -> CharacterEntity? {
-        return CharacterEntity(JSON: self.toJSON())
+    func toDomain() -> CharacterEntity {
+        return CharacterEntity(
+            id: self.id ?? 0,
+            name: self.name ?? "",
+            characterDescription: self.characterDescription ?? "",
+            modified: self.modified ?? "",
+            resourceURI: self.resourceURI ?? "",
+            urls: self.getURLs(),
+            thumbnail: self.thumbnail?.toDomain(),
+            comics: self.comics?.toDomain(),
+            stories: self.stories?.toDomain(),
+            events: self.events?.toDomain(),
+            series: self.series?.toDomain()
+        )
+    }
+}
+
+private extension CharacterDTO {
+    func getURLs() -> [UrlEntity]? {
+        self.urls?.map({ dto in
+            dto.toDomain()
+        })
     }
 }

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol MarvelDetailViewModelProtocol {
-    func loadCharacter(completion: @escaping (String?, CharacterEntity?) -> Void)
+    func loadCharacter()
     func getCharacter() -> CharacterEntity?
 }
 
@@ -20,7 +21,8 @@ class MarvelDetailViewModel: MarvelDetailViewModelProtocol {
     var getCharacterWithIdUseCase: GetCharacterWithIdUseCaseProtocol
     var filter: CharacterFilterEntity = CharacterFilterEntity()
     var characterId: Int
-    
+    private var cancellables = Set<AnyCancellable>()
+
     // MARK: - Initializer
     
     init(getCharacterWithIdUseCase: GetCharacterWithIdUseCaseProtocol, characterId: Int) {
@@ -30,20 +32,29 @@ class MarvelDetailViewModel: MarvelDetailViewModelProtocol {
     
     // MARK: - MarvelListViewModelProtocol
     
-    func loadCharacter(completion: @escaping (String?, CharacterEntity?) -> Void) {
-        self.getCharacterWithIdUseCase.execute(input: GetCharacterWithIdUseCaseInput(characterId: self.characterId, filters: self.filter)) { [unowned self] result in
-            switch result {
-            case let .success(value):
-                if let results = value.data?.results {
-                    self.character = results.first
-                    completion(nil, self.character)
-                } else {
-                    completion(DomainError.dataError.localizedDescription, nil)
+    func loadCharacter() {
+        let cancellable = self.getCharacterWithIdUseCase.execute(
+            input: GetCharacterWithIdUseCaseInput(
+                characterId: self.characterId,
+                filters: self.filter
+            )
+        )
+            .sink { result in
+                switch result {
+                case let .success(value):
+                    if let results = value.data?.results {
+                        self.character = results.first
+                        //TODO
+                    } else {
+                        //TODO
+                    }
+                case let .failure(error):
+                    //TODO
+                    return
                 }
-            case let .failure(error):
-                completion(error.localizedDescription, nil)
             }
-        }
+        self.cancellables.insert(cancellable)
+        
     }
     
     func getCharacter() -> CharacterEntity? {

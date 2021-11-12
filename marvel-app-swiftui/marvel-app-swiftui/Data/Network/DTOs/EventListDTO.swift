@@ -6,29 +6,30 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public class EventListDTO: NSObject, Mappable {
+struct EventListDTO: Decodable {
     var available: Int?
     var returned: Int?
     var collectionURI: String?
     var items: [EventSummaryDTO]?
-
-    required convenience public init?(map: Map) {
-        self.init()
-    }
-    
-    public func mapping(map: Map) {
-        available                   <- map["available"]
-        returned                    <- map["returned"]
-        collectionURI               <- map["collectionURI"]
-        items                       <- map["items"]
-    }
 }
 
 extension EventListDTO {
-    public func toDomain() -> EventListEntity? {
-        return EventListEntity(JSON: self.toJSON())
+    func toDomain() -> EventListEntity {
+        return EventListEntity(
+            available: self.available ?? 0,
+            returned: self.returned ?? 0,
+            collectionURI: self.collectionURI ?? "",
+            items: self.getItems()
+        )
+    }
+}
+
+private extension EventListDTO {
+    func getItems() -> [EventSummaryEntity]? {
+        self.items?.map({ dto in
+            dto.toDomain()
+        })
     }
 }
 

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol MarvelListViewModelProtocol {
-    func loadCharacters(completion: @escaping (String?) -> Void)
+    func loadCharacters()
     func getCharacters() -> [CharacterEntity]
     func setIsLoadingData(loadingData: Bool)
     func getIsLoadingData() -> Bool
@@ -25,7 +26,8 @@ class MarvelListViewModel: MarvelListViewModelProtocol {
     var filter: CharacterFilterEntity = CharacterFilterEntity()
     var isLoadingData: Bool = false
     var hasMoreData: Bool = true
-    
+    private var cancellables = Set<AnyCancellable>()
+
     // MARK: - Initializer
     
     init(getCharactersUseCase: GetCharactersUseCaseProtocol) {
@@ -34,22 +36,24 @@ class MarvelListViewModel: MarvelListViewModelProtocol {
     
     // MARK: - MarvelListViewModelProtocol
     
-    func loadCharacters(completion: @escaping (String?) -> Void) {
-        self.getCharactersUseCase.execute(input: GetCharactersUseCaseInput(filters: self.filter)) { [unowned self] result in
-            switch result {
-            case let .success(value):
-                if let count = value.data?.count, let results = value.data?.results {
-                    self.filter.offset = (self.filter.offset ?? 0) + count
-                    self.characters.append(contentsOf: results)
-                    self.hasMoreData = results.count > 0
-                    completion(nil)
-                } else {
-                    completion(DomainError.dataError.localizedDescription)
+    func loadCharacters() {
+        let cancellable = self.getCharactersUseCase.execute(input: GetCharactersUseCaseInput(filters: self.filter))
+            .sink { result in
+                switch result {
+                case let .success(value):
+                    if let count = value.data?.count, let results = value.data?.results {
+                        self.filter.offset = (self.filter.offset ?? 0) + count
+                        self.characters.append(contentsOf: results)
+                        self.hasMoreData = results.count > 0
+                    } else {
+                        // TODO: Error
+                    }
+                case .failure(_):
+                    // TODO: Error
+                    return
                 }
-            case let .failure(error):
-                completion(error.localizedDescription)
             }
-        }
+        self.cancellables.insert(cancellable)
     }
     
     func getCharacters() -> [CharacterEntity] {
