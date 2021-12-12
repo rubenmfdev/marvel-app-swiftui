@@ -8,19 +8,14 @@
 import Foundation
 import Combine
 
-protocol MarvelListViewModelProtocol {
-    func loadCharacters()
-    func getCharacters() -> [CharacterEntity]
-    func setIsLoadingData(loadingData: Bool)
-    func getIsLoadingData() -> Bool
-    func getHasMoreData() -> Bool
-    func addSearchText(searchText: String)
-}
+class MarvelListViewModel: ObservableObject {
+    
+    // MARK: - Publishers
 
-class MarvelListViewModel: MarvelListViewModelProtocol {
-    
+    @Published var state: LoaderState<[CharacterEntity]> = .loading
+
     // MARK: - Attributes
-    
+
     var characters: [CharacterEntity] = []
     var getCharactersUseCase: GetCharactersUseCaseProtocol
     var filter: CharacterFilterEntity = CharacterFilterEntity()
@@ -33,10 +28,18 @@ class MarvelListViewModel: MarvelListViewModelProtocol {
     init(getCharactersUseCase: GetCharactersUseCaseProtocol) {
         self.getCharactersUseCase = getCharactersUseCase
     }
-    
-    // MARK: - MarvelListViewModelProtocol
-    
+}
+
+// MARK: - Public methods
+extension MarvelListViewModel {
+    func onAppear() {
+        self.loadCharacters()
+    }
+}
+
+private extension MarvelListViewModel {
     func loadCharacters() {
+        self.state = .loading
         let cancellable = self.getCharactersUseCase.execute(input: GetCharactersUseCaseInput(filters: self.filter))
             .sink { result in
                 switch result {
@@ -44,40 +47,27 @@ class MarvelListViewModel: MarvelListViewModelProtocol {
                     if let count = value.data?.count, let results = value.data?.results {
                         self.filter.offset = (self.filter.offset ?? 0) + count
                         self.characters.append(contentsOf: results)
+                        self.state = .success(self.characters)
                         self.hasMoreData = results.count > 0
                     } else {
-                        // TODO: Error
+                        self.state = .failed(.GenericError)
                     }
-                case .failure(_):
-                    // TODO: Error
-                    return
+                case let .failure(error):
+                    self.state = .failed(error)
                 }
             }
         self.cancellables.insert(cancellable)
     }
-    
-    func getCharacters() -> [CharacterEntity] {
-        return self.characters
-    }
-    
-    func setIsLoadingData(loadingData: Bool) {
-        self.isLoadingData = loadingData
-    }
-    func getIsLoadingData() -> Bool {
-        self.isLoadingData
-    }
-    
-    func getHasMoreData() -> Bool {
-        self.hasMoreData
-    }
-    
-    func addSearchText(searchText: String) {
-        if searchText == "" {
-            self.filter.nameStartsWith = nil
-        } else {
-            self.filter.nameStartsWith = searchText
-        }
-        self.characters = []
-        self.filter.offset = 0
+}
+
+extension MarvelListViewModel {
+    convenience init() {
+        // Inyection
+        let getCharactersUseCase = GetCharactersUseCase(
+            repository: CharactersDataRepository(
+                dataSource: CharactersNetworkDataSource()
+            )
+        )
+        self.init(getCharactersUseCase: getCharactersUseCase)
     }
 }

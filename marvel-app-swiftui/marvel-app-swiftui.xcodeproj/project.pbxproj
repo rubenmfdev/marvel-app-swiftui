@@ -51,7 +51,6 @@
 		DB4CCBD0267F5B3A007C3CF8 /* StoryListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB93267F5B3A007C3CF8 /* StoryListEntity.swift */; };
 		DB4CCBD1267F5B3A007C3CF8 /* UrlEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB94267F5B3A007C3CF8 /* UrlEntity.swift */; };
 		DB4CCBD2267F5B3A007C3CF8 /* StorySummaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB95267F5B3A007C3CF8 /* StorySummaryEntity.swift */; };
-		DB4CCBD3267F5B3A007C3CF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB97267F5B3A007C3CF8 /* Constants.swift */; };
 		DB4CCBD4267F5B3A007C3CF8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB99267F5B3A007C3CF8 /* NetworkManager.swift */; };
 		DB4CCBD5267F5B3A007C3CF8 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB9A267F5B3A007C3CF8 /* BaseRouter.swift */; };
 		DB4CCBD6267F5B3A007C3CF8 /* ImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB9B267F5B3A007C3CF8 /* ImageRouter.swift */; };
@@ -68,6 +67,26 @@
 		DB4CCC20267F5E09007C3CF8 /* MarvelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCC14267F5E09007C3CF8 /* MarvelDetailViewModel.swift */; };
 		DB4CCC27267F5E09007C3CF8 /* MarvelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCC1D267F5E09007C3CF8 /* MarvelListViewModel.swift */; };
 		DB4CCC49267FB017007C3CF8 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCC48267FB017007C3CF8 /* AsyncImage.swift */; };
+		DB7EEEA62746922C00FD5885 /* MarvelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7EEEA52746922C00FD5885 /* MarvelListView.swift */; };
+		DB7EEEA92746A90600FD5885 /* LoaderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7EEEA82746A90600FD5885 /* LoaderState.swift */; };
+		DB7EEEAB2746A94900FD5885 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7EEEAA2746A94900FD5885 /* Loader.swift */; };
+		DB89AEB72760F5AE00C9B5E9 /* MarvelListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEB62760F5AE00C9B5E9 /* MarvelListCellView.swift */; };
+		DB89AEB82760F5AE00C9B5E9 /* MarvelListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEB62760F5AE00C9B5E9 /* MarvelListCellView.swift */; };
+		DB89AEBD2760FBB300C9B5E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEBC2760FBB300C9B5E9 /* Constants.swift */; };
+		DB89AEBE2760FBB300C9B5E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEBC2760FBB300C9B5E9 /* Constants.swift */; };
+		DB89AEC02760FE1200C9B5E9 /* View+Conditionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEBF2760FE1200C9B5E9 /* View+Conditionals.swift */; };
+		DB89AEC12760FE1200C9B5E9 /* View+Conditionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89AEBF2760FE1200C9B5E9 /* View+Conditionals.swift */; };
+		DB89AEC2276100FC00C9B5E9 /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB90267F5B3A007C3CF8 /* CharacterEntity.swift */; };
+		DB89AEC32761011900C9B5E9 /* UrlEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB94267F5B3A007C3CF8 /* UrlEntity.swift */; };
+		DB89AEC42761012900C9B5E9 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB8F267F5B3A007C3CF8 /* ImageEntity.swift */; };
+		DB89AEC52761012E00C9B5E9 /* ComicListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB8E267F5B3A007C3CF8 /* ComicListEntity.swift */; };
+		DB89AEC62761013300C9B5E9 /* ComicSummaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB92267F5B3A007C3CF8 /* ComicSummaryEntity.swift */; };
+		DB89AEC72761013A00C9B5E9 /* StoryListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB93267F5B3A007C3CF8 /* StoryListEntity.swift */; };
+		DB89AEC82761013E00C9B5E9 /* StorySummaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB95267F5B3A007C3CF8 /* StorySummaryEntity.swift */; };
+		DB89AEC92761014200C9B5E9 /* EventListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB91267F5B3A007C3CF8 /* EventListEntity.swift */; };
+		DB89AECA2761014500C9B5E9 /* EventSummaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB8C267F5B3A007C3CF8 /* EventSummaryEntity.swift */; };
+		DB89AECB2761015600C9B5E9 /* SeriesListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB89267F5B3A007C3CF8 /* SeriesListEntity.swift */; };
+		DB89AECC2761015A00C9B5E9 /* SeriesSummaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB8A267F5B3A007C3CF8 /* SeriesSummaryEntity.swift */; };
 		DBF8F163273E74FB0008E357 /* ErrorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8F162273E74FB0008E357 /* ErrorEntity.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,7 +162,6 @@
 		DB4CCB93267F5B3A007C3CF8 /* StoryListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryListEntity.swift; sourceTree = "<group>"; };
 		DB4CCB94267F5B3A007C3CF8 /* UrlEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlEntity.swift; sourceTree = "<group>"; };
 		DB4CCB95267F5B3A007C3CF8 /* StorySummaryEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySummaryEntity.swift; sourceTree = "<group>"; };
-		DB4CCB97267F5B3A007C3CF8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DB4CCB99267F5B3A007C3CF8 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DB4CCB9A267F5B3A007C3CF8 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		DB4CCB9B267F5B3A007C3CF8 /* ImageRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRouter.swift; sourceTree = "<group>"; };
@@ -161,6 +179,12 @@
 		DB4CCC14267F5E09007C3CF8 /* MarvelDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelDetailViewModel.swift; sourceTree = "<group>"; };
 		DB4CCC1D267F5E09007C3CF8 /* MarvelListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelListViewModel.swift; sourceTree = "<group>"; };
 		DB4CCC48267FB017007C3CF8 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		DB7EEEA52746922C00FD5885 /* MarvelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelListView.swift; sourceTree = "<group>"; };
+		DB7EEEA82746A90600FD5885 /* LoaderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderState.swift; sourceTree = "<group>"; };
+		DB7EEEAA2746A94900FD5885 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		DB89AEB62760F5AE00C9B5E9 /* MarvelListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelListCellView.swift; sourceTree = "<group>"; };
+		DB89AEBC2760FBB300C9B5E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DB89AEBF2760FE1200C9B5E9 /* View+Conditionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conditionals.swift"; sourceTree = "<group>"; };
 		DBF8F162273E74FB0008E357 /* ErrorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEntity.swift; sourceTree = "<group>"; };
 		EB46A3631991D0685F511116 /* Pods-marvel-app-swiftuiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-app-swiftuiTests.debug.xcconfig"; path = "Target Support Files/Pods-marvel-app-swiftuiTests/Pods-marvel-app-swiftuiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F33426FA19B98A54661F3D53 /* Pods-marvel-app-swiftuiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-app-swiftuiTests.release.xcconfig"; path = "Target Support Files/Pods-marvel-app-swiftuiTests/Pods-marvel-app-swiftuiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -415,10 +439,10 @@
 			isa = PBXGroup;
 			children = (
 				DB4CCC47267FB003007C3CF8 /* SwiftUIViews */,
-				DB4CCB97267F5B3A007C3CF8 /* Constants.swift */,
 				DB4CCB98267F5B3A007C3CF8 /* Network */,
 				DB4CCB9D267F5B3A007C3CF8 /* Extensions */,
 				DB4CCBA7267F5B3A007C3CF8 /* UIViews */,
+				DB89AEBC2760FBB300C9B5E9 /* Constants.swift */,
 				DB4CCBAA267F5B3A007C3CF8 /* Coordinator.swift */,
 				DB4CCBAB267F5B3A007C3CF8 /* Configuration.swift */,
 				DBF8F162273E74FB0008E357 /* ErrorEntity.swift */,
@@ -445,6 +469,7 @@
 				DB4CCBA0267F5B3A007C3CF8 /* UIViewController+Alert.swift */,
 				DB4CCBA1267F5B3A007C3CF8 /* Dictionary.swift */,
 				DB4CCBA2267F5B3A007C3CF8 /* String+Json.swift */,
+				DB89AEBF2760FE1200C9B5E9 /* View+Conditionals.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -462,8 +487,8 @@
 			isa = PBXGroup;
 			children = (
 				DB4CCB2F267F5173007C3CF8 /* ContentView.swift */,
-				DB4CCC11267F5E09007C3CF8 /* MarvelDetail */,
 				DB4CCC16267F5E09007C3CF8 /* MarvelList */,
+				DB4CCC11267F5E09007C3CF8 /* MarvelDetail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -479,7 +504,9 @@
 		DB4CCC16267F5E09007C3CF8 /* MarvelList */ = {
 			isa = PBXGroup;
 			children = (
+				DB7EEEA52746922C00FD5885 /* MarvelListView.swift */,
 				DB4CCC1D267F5E09007C3CF8 /* MarvelListViewModel.swift */,
+				DB89AEB62760F5AE00C9B5E9 /* MarvelListCellView.swift */,
 			);
 			path = MarvelList;
 			sourceTree = "<group>";
@@ -487,9 +514,19 @@
 		DB4CCC47267FB003007C3CF8 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				DB7EEEA72746A8F500FD5885 /* Loader */,
 				DB4CCC48267FB017007C3CF8 /* AsyncImage.swift */,
 			);
 			path = SwiftUIViews;
+			sourceTree = "<group>";
+		};
+		DB7EEEA72746A8F500FD5885 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				DB7EEEA82746A90600FD5885 /* LoaderState.swift */,
+				DB7EEEAA2746A94900FD5885 /* Loader.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		F5EC63296E5C2543D5BDF8FD /* Pods */ = {
@@ -728,6 +765,7 @@
 				DB4CCBBD267F5B3A007C3CF8 /* StoryListDTO.swift in Sources */,
 				DB4CCBC2267F5B3A007C3CF8 /* CharactersRepository.swift in Sources */,
 				DB4CCC20267F5E09007C3CF8 /* MarvelDetailViewModel.swift in Sources */,
+				DB7EEEA62746922C00FD5885 /* MarvelListView.swift in Sources */,
 				DB4CCBE1267F5B3A007C3CF8 /* CustomUIView.swift in Sources */,
 				DB4CCBD0267F5B3A007C3CF8 /* StoryListEntity.swift in Sources */,
 				DB4CCBD2267F5B3A007C3CF8 /* StorySummaryEntity.swift in Sources */,
@@ -742,6 +780,7 @@
 				DB4CCBC0267F5B3A007C3CF8 /* CharacterDataContainerDTO.swift in Sources */,
 				DB4CCBB7267F5B3A007C3CF8 /* ComicListDTO.swift in Sources */,
 				DB4CCBDA267F5B3A007C3CF8 /* UIViewController+Alert.swift in Sources */,
+				DB89AEBD2760FBB300C9B5E9 /* Constants.swift in Sources */,
 				DB4CCBB5267F5B3A007C3CF8 /* CharacterDataWrapperDTO.swift in Sources */,
 				DB4CCBE3267F5B3A007C3CF8 /* Configuration.swift in Sources */,
 				DB4CCBC7267F5B3A007C3CF8 /* SeriesSummaryEntity.swift in Sources */,
@@ -749,6 +788,7 @@
 				DB4CCBC4267F5B3A007C3CF8 /* GetCharactersUseCase.swift in Sources */,
 				DB4CCBB3267F5B3A007C3CF8 /* CharactersRouter.swift in Sources */,
 				DB4CCBD7267F5B3A007C3CF8 /* HTTPStatusCode.swift in Sources */,
+				DB89AEB72760F5AE00C9B5E9 /* MarvelListCellView.swift in Sources */,
 				DB4CCBDC267F5B3A007C3CF8 /* String+Json.swift in Sources */,
 				DB4CCC49267FB017007C3CF8 /* AsyncImage.swift in Sources */,
 				DB4CCBB9267F5B3A007C3CF8 /* SeriesListDTO.swift in Sources */,
@@ -757,6 +797,7 @@
 				DB4CCBBB267F5B3A007C3CF8 /* ImageDTO.swift in Sources */,
 				DB4CCB2E267F5173007C3CF8 /* marvel_app_swiftuiApp.swift in Sources */,
 				DB4CCBC5267F5B3A007C3CF8 /* CharacterFilterEntity.swift in Sources */,
+				DB89AEC02760FE1200C9B5E9 /* View+Conditionals.swift in Sources */,
 				DBF8F163273E74FB0008E357 /* ErrorEntity.swift in Sources */,
 				DB4CCBCC267F5B3A007C3CF8 /* ImageEntity.swift in Sources */,
 				DB4CCBBC267F5B3A007C3CF8 /* SeriesSummaryDTO.swift in Sources */,
@@ -772,9 +813,10 @@
 				DB4CCBB8267F5B3A007C3CF8 /* StorySummaryDTO.swift in Sources */,
 				DB4CCBCF267F5B3A007C3CF8 /* ComicSummaryEntity.swift in Sources */,
 				DB4CCBCB267F5B3A007C3CF8 /* ComicListEntity.swift in Sources */,
+				DB7EEEA92746A90600FD5885 /* LoaderState.swift in Sources */,
 				DB4CCBDB267F5B3A007C3CF8 /* Dictionary.swift in Sources */,
-				DB4CCBD3267F5B3A007C3CF8 /* Constants.swift in Sources */,
 				DB4CCBB2267F5B3A007C3CF8 /* CharactersNetworkDataSource.swift in Sources */,
+				DB7EEEAB2746A94900FD5885 /* Loader.swift in Sources */,
 				DB4CCBD8267F5B3A007C3CF8 /* String+Localizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,7 +825,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB89AECC2761015A00C9B5E9 /* SeriesSummaryEntity.swift in Sources */,
+				DB89AEC72761013A00C9B5E9 /* StoryListEntity.swift in Sources */,
+				DB89AEC62761013300C9B5E9 /* ComicSummaryEntity.swift in Sources */,
+				DB89AEC2276100FC00C9B5E9 /* CharacterEntity.swift in Sources */,
 				DB4CCB40267F5175007C3CF8 /* marvel_app_swiftuiTests.swift in Sources */,
+				DB89AEC42761012900C9B5E9 /* ImageEntity.swift in Sources */,
+				DB89AEC82761013E00C9B5E9 /* StorySummaryEntity.swift in Sources */,
+				DB89AEC32761011900C9B5E9 /* UrlEntity.swift in Sources */,
+				DB89AECA2761014500C9B5E9 /* EventSummaryEntity.swift in Sources */,
+				DB89AEC92761014200C9B5E9 /* EventListEntity.swift in Sources */,
+				DB89AEC52761012E00C9B5E9 /* ComicListEntity.swift in Sources */,
+				DB89AEB82760F5AE00C9B5E9 /* MarvelListCellView.swift in Sources */,
+				DB89AEBE2760FBB300C9B5E9 /* Constants.swift in Sources */,
+				DB89AEC12760FE1200C9B5E9 /* View+Conditionals.swift in Sources */,
+				DB89AECB2761015600C9B5E9 /* SeriesListEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

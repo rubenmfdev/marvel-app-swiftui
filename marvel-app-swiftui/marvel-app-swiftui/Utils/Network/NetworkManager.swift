@@ -41,7 +41,7 @@ class NetworkManager {
             .map { response in
                 let dataResponse = response.mapError { error in
                     return ErrorEntity.GenericError
-                }
+                }s
                 switch dataResponse.result {
                 case let .success(item):
                     return .success(item)

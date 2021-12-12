@@ -33,5 +33,9 @@ struct Constants {
             static let description              = "marvelDetail_description"
         }
     }
+    
+    struct Images {
+        static let comicPlaceholderName = "comicPlaceholder"
+    }
 }
 

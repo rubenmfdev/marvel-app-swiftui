@@ -8,23 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    let characters: [CharacterEntity] = []
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(characters, id: \.id) { item in
-                    HStack {
-                        AsyncImage(url: URL(string: item.thumbnailURL())!,
-                                       placeholder: { Text("Loading ...") },
-                                       image: { Image(uiImage: $0).resizable() })
-                               .frame(idealHeight: UIScreen.main.bounds.width / 2 * 3)
-                        Text(item.name ?? "")
-                    }
-                }
-            }.navigationTitle("Menu")
-        }
+        MarvelListView()
     }
 }
 
