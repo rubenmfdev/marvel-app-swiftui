@@ -39,9 +39,10 @@ class NetworkManager {
             .validate()
             .publishDecodable(type: T.self)
             .map { response in
+                debugPrint(response)
                 let dataResponse = response.mapError { error in
                     return ErrorEntity.GenericError
-                }s
+                }
                 switch dataResponse.result {
                 case let .success(item):
                     return .success(item)

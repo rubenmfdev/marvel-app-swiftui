@@ -12,7 +12,7 @@ struct MarvelListView: View {
     
     // MARK: - Attributes
     
-    let viewModel: MarvelListViewModel = MarvelListViewModel()
+    @ObservedObject var viewModel: MarvelListViewModel = MarvelListViewModel()
 
     
     // MARK: - Body
@@ -58,7 +58,7 @@ extension MarvelListView {
     
     func getList(isPlaceholder: Bool, data: [CharacterEntity]) -> some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 0) {
                 ForEach(data, id: \.id) { element in
                     MarvelListCellView(character: element)
                 }

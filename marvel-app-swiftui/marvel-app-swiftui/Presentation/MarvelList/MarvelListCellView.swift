@@ -19,12 +19,39 @@ struct MarvelListCellView: View {
     
     var body: some View {
         HStack {
-            Image(Constants.Images.comicPlaceholderName)
-                .resizable()
-                .frame(width: self.imageSize, height: self.imageSize, alignment: .leading)
+            ImageLoaderView(url: URL(string: character.thumbnailURL()), placeholder: self.getPlaceHolder) { uiImage in
+                self.getImage(uiImage: uiImage)
+            }
             Text(character.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+}
+
+private extension MarvelListCellView {
+    
+    @ViewBuilder
+    func getPlaceHolder() -> some View {
+        self.getModifiedImage(
+            image: Image(Constants.Images.comicPlaceholderName)
+        )
+    }
+    
+    @ViewBuilder
+    func getImage(uiImage: UIImage) -> some View {
+        self.getModifiedImage(image: Image(uiImage: uiImage))
+    }
+    
+    @ViewBuilder
+    func getModifiedImage(image: Image) -> some View {
+        image
+            .resizable()
+            .frame(
+                width: self.imageSize,
+                height: self.imageSize,
+                alignment: .leading
+            )
+            .aspectRatio(contentMode: .fill)
     }
 }
 

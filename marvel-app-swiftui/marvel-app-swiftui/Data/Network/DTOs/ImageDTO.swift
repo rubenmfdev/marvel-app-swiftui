@@ -10,6 +10,11 @@ import Foundation
 struct ImageDTO: Decodable {
     var path: String?
     var imageExtension: String?
+    
+    enum CodingKeys: String, CodingKey {
+            case path
+            case imageExtension = "extension"
+        }
 }
 
 extension ImageDTO {

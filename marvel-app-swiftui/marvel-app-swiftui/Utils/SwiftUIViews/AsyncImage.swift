@@ -1,5 +1,5 @@
 //
-//  AsyncImage.swift
+//  ImageLoaderView.swift
 //  marvel-app-swiftui
 //
 //  Created by Ruben Marquez on 20/06/2021.
@@ -7,18 +7,17 @@
 
 import Foundation
 import SwiftUI
-import UIKit
 import Combine
 
-struct AsyncImage<Placeholder: View>: View {
+struct ImageLoaderView<Placeholder: View, ImageView: View>: View {
     @StateObject private var loader: ImageLoader
     private let placeholder: Placeholder
-    private let image: (UIImage) -> Image
+    private let image: (UIImage) -> ImageView
     
     init(
-        url: URL,
+        url: URL?,
         @ViewBuilder placeholder: () -> Placeholder,
-        @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)
+        @ViewBuilder image: @escaping (UIImage) -> ImageView
     ) {
         self.placeholder = placeholder()
         self.image = image
@@ -59,13 +58,13 @@ class ImageLoader: ObservableObject {
     
     private(set) var isLoading = false
     
-    private let url: URL
+    private let url: URL?
     private var cache: ImageCache?
     private var cancellable: AnyCancellable?
     
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
     
-    init(url: URL, cache: ImageCache? = nil) {
+    init(url: URL?, cache: ImageCache? = nil) {
         self.url = url
         self.cache = cache
     }
@@ -75,6 +74,7 @@ class ImageLoader: ObservableObject {
     }
     
     func load() {
+        guard let url = self.url else { return }
         guard !isLoading else { return }
 
         if let image = cache?[url] {
@@ -107,6 +107,7 @@ class ImageLoader: ObservableObject {
     }
     
     private func cache(_ image: UIImage?) {
+        guard let url = self.url else { return }
         image.map { cache?[url] = $0 }
     }
 }
