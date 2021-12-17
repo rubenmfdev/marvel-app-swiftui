@@ -12,3 +12,16 @@ enum LoaderState<T> {
     case success(T)
     case failed(ErrorEntity)
 }
+
+extension LoaderState {
+    func isSuccess() -> Bool {
+        switch self {
+        case .loading:
+            return false
+        case .success:
+            return true
+        case .failed:
+            return false
+        }
+    }
+}

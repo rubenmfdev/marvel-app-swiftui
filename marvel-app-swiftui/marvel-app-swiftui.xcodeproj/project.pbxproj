@@ -10,6 +10,9 @@
 		1E3F43096DC5EADA8896920A /* Pods_marvel_app_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2844E81979DFF9F5A81E0C19 /* Pods_marvel_app_swiftuiTests.framework */; };
 		97BED4F9FCC05DBA3929A1BC /* Pods_marvel_app_swiftui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021586AA8F433997B291DC4 /* Pods_marvel_app_swiftui.framework */; };
 		DB2CAD75276B685C00723B95 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD74276B685B00723B95 /* AsyncImage.swift */; };
+		DB2CAD77276B72F600723B95 /* MarvelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD76276B72F600723B95 /* MarvelDetailView.swift */; };
+		DB2CAD79276B7CC900723B95 /* ScrollViewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD78276B7CC900723B95 /* ScrollViewOffset.swift */; };
+		DB2CAD7C276B820E00723B95 /* OffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD7B276B820E00723B95 /* OffsetPreferenceKey.swift */; };
 		DB4CCB2E267F5173007C3CF8 /* marvel_app_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB2D267F5173007C3CF8 /* marvel_app_swiftuiApp.swift */; };
 		DB4CCB30267F5173007C3CF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB2F267F5173007C3CF8 /* ContentView.swift */; };
 		DB4CCB35267F5175007C3CF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4CCB34267F5175007C3CF8 /* Preview Assets.xcassets */; };
@@ -111,6 +114,9 @@
 		4FD9B60E948D2102C541323C /* Pods-marvel-app-swiftui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-app-swiftui.debug.xcconfig"; path = "Target Support Files/Pods-marvel-app-swiftui/Pods-marvel-app-swiftui.debug.xcconfig"; sourceTree = "<group>"; };
 		B021586AA8F433997B291DC4 /* Pods_marvel_app_swiftui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvel_app_swiftui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2CAD74276B685B00723B95 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		DB2CAD76276B72F600723B95 /* MarvelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailView.swift; sourceTree = "<group>"; };
+		DB2CAD78276B7CC900723B95 /* ScrollViewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffset.swift; sourceTree = "<group>"; };
+		DB2CAD7B276B820E00723B95 /* OffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		DB4CCB2A267F5173007C3CF8 /* marvel-app-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-app-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4CCB2D267F5173007C3CF8 /* marvel_app_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvel_app_swiftuiApp.swift; sourceTree = "<group>"; };
 		DB4CCB2F267F5173007C3CF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -221,6 +227,15 @@
 				2844E81979DFF9F5A81E0C19 /* Pods_marvel_app_swiftuiTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB2CAD7A276B81DF00723B95 /* ScrollViewOffset */ = {
+			isa = PBXGroup;
+			children = (
+				DB2CAD78276B7CC900723B95 /* ScrollViewOffset.swift */,
+				DB2CAD7B276B820E00723B95 /* OffsetPreferenceKey.swift */,
+			);
+			path = ScrollViewOffset;
 			sourceTree = "<group>";
 		};
 		DB4CCB21267F5173007C3CF8 = {
@@ -494,6 +509,7 @@
 		DB4CCC11267F5E09007C3CF8 /* MarvelDetail */ = {
 			isa = PBXGroup;
 			children = (
+				DB2CAD76276B72F600723B95 /* MarvelDetailView.swift */,
 				DB4CCC14267F5E09007C3CF8 /* MarvelDetailViewModel.swift */,
 			);
 			path = MarvelDetail;
@@ -512,6 +528,7 @@
 		DB4CCC47267FB003007C3CF8 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				DB2CAD7A276B81DF00723B95 /* ScrollViewOffset */,
 				DB2CAD74276B685B00723B95 /* AsyncImage.swift */,
 				DB7EEEA72746A8F500FD5885 /* Loader */,
 			);
@@ -808,8 +825,10 @@
 				DB4CCBC9267F5B3A007C3CF8 /* EventSummaryEntity.swift in Sources */,
 				DB4CCBD9267F5B3A007C3CF8 /* String+Crypto.swift in Sources */,
 				DB4CCBC1267F5B3A007C3CF8 /* CharactersDataRepository.swift in Sources */,
+				DB2CAD79276B7CC900723B95 /* ScrollViewOffset.swift in Sources */,
 				DB4CCBCD267F5B3A007C3CF8 /* CharacterEntity.swift in Sources */,
 				DB4CCC27267F5E09007C3CF8 /* MarvelListViewModel.swift in Sources */,
+				DB2CAD77276B72F600723B95 /* MarvelDetailView.swift in Sources */,
 				DB4CCBBA267F5B3A007C3CF8 /* CharacterDTO.swift in Sources */,
 				DB4CCBC8267F5B3A007C3CF8 /* CharacterDataContainerEntity.swift in Sources */,
 				DB4CCBCA267F5B3A007C3CF8 /* CharacterDataWrapperEntity.swift in Sources */,
@@ -817,6 +836,7 @@
 				DB4CCBB8267F5B3A007C3CF8 /* StorySummaryDTO.swift in Sources */,
 				DB4CCBCF267F5B3A007C3CF8 /* ComicSummaryEntity.swift in Sources */,
 				DB4CCBCB267F5B3A007C3CF8 /* ComicListEntity.swift in Sources */,
+				DB2CAD7C276B820E00723B95 /* OffsetPreferenceKey.swift in Sources */,
 				DB7EEEA92746A90600FD5885 /* LoaderState.swift in Sources */,
 				DB4CCBDB267F5B3A007C3CF8 /* Dictionary.swift in Sources */,
 				DB4CCBB2267F5B3A007C3CF8 /* CharactersNetworkDataSource.swift in Sources */,

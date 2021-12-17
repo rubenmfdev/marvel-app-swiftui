@@ -8,16 +8,14 @@
 import Foundation
 import Combine
 
-protocol MarvelDetailViewModelProtocol {
-    func loadCharacter()
-    func getCharacter() -> CharacterEntity?
-}
+class MarvelDetailViewModel: ObservableObject {
+    
+    // MARK: - Publishers
 
-class MarvelDetailViewModel: MarvelDetailViewModelProtocol {
+    @Published var state: LoaderState<CharacterEntity> = .loading
     
     // MARK: - Attributes
     
-    var character: CharacterEntity?
     var getCharacterWithIdUseCase: GetCharacterWithIdUseCaseProtocol
     var filter: CharacterFilterEntity = CharacterFilterEntity()
     var characterId: Int
@@ -29,10 +27,17 @@ class MarvelDetailViewModel: MarvelDetailViewModelProtocol {
         self.getCharacterWithIdUseCase = getCharacterWithIdUseCase
         self.characterId = characterId
     }
+        
+    // MARK: - OnAppear
     
-    // MARK: - MarvelListViewModelProtocol
-    
+    func onAppear() {
+        self.loadCharacter()
+    }
+}
+
+private extension MarvelDetailViewModel {
     func loadCharacter() {
+        self.state = .loading
         let cancellable = self.getCharacterWithIdUseCase.execute(
             input: GetCharacterWithIdUseCaseInput(
                 characterId: self.characterId,
@@ -42,23 +47,24 @@ class MarvelDetailViewModel: MarvelDetailViewModelProtocol {
             .sink { result in
                 switch result {
                 case let .success(value):
-                    if let results = value.data?.results {
-                        self.character = results.first
-                        //TODO
+                    if let results = value.data?.results, let character = results.first {
+                        self.state = .success(character)
                     } else {
-                        //TODO
+                        self.state = .failed(.GenericError)
                     }
                 case let .failure(error):
-                    //TODO
-                    return
+                    self.state = .failed(error)
                 }
             }
         self.cancellables.insert(cancellable)
-        
     }
-    
-    func getCharacter() -> CharacterEntity? {
-        return self.character
+}
+
+extension MarvelDetailViewModel {
+    convenience init(characterId: Int) {
+        let charactersNetworkDataSource = CharactersNetworkDataSource()
+        let charactersDataRepository = CharactersDataRepository(dataSource: charactersNetworkDataSource)
+        let getCharacterWithIdUseCase = GetCharacterWithIdUseCase(repository: charactersDataRepository)
+        self.init(getCharacterWithIdUseCase: getCharacterWithIdUseCase, characterId: characterId)
     }
-    
 }

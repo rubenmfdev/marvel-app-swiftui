@@ -9,6 +9,7 @@
 "error" = "Error";
 "ok" = "OK";
 
+
 // MARK: - Errors
 
 "noDataError" = "No hay datos disponibles";

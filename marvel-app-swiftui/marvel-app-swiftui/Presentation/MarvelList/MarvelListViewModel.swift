@@ -22,24 +22,44 @@ class MarvelListViewModel: ObservableObject {
     var isLoadingData: Bool = false
     var hasMoreData: Bool = true
     private var cancellables = Set<AnyCancellable>()
+    var isPullingToRefresh = false
 
     // MARK: - Initializer
     
     init(getCharactersUseCase: GetCharactersUseCaseProtocol) {
         self.getCharactersUseCase = getCharactersUseCase
+        self.state = .loading
+        self.loadCharacters()
     }
 }
 
 // MARK: - Public methods
 extension MarvelListViewModel {
-    func onAppear() {
-        self.loadCharacters()
+    func onRefresh(offset: Float) {
+        if !self.state.isSuccess() {
+            return
+        }
+        if offset > 20 {
+            self.isPullingToRefresh = true
+        } else if offset == 0 && self.isPullingToRefresh {
+            self.state = .loading
+            self.resetCharacters()
+            self.loadCharacters()
+            self.isPullingToRefresh = false
+        } else {
+            // Nothing to do
+        }
+    }
+    
+    func onEndReached() {
+        if self.state.isSuccess() {
+            self.loadCharacters()
+        }
     }
 }
 
 private extension MarvelListViewModel {
     func loadCharacters() {
-        self.state = .loading
         let cancellable = self.getCharactersUseCase.execute(input: GetCharactersUseCaseInput(filters: self.filter))
             .sink { result in
                 switch result {
@@ -57,6 +77,11 @@ private extension MarvelListViewModel {
                 }
             }
         self.cancellables.insert(cancellable)
+    }
+    
+    func resetCharacters() {
+        self.characters = []
+        self.filter = CharacterFilterEntity()
     }
 }
 

@@ -18,12 +18,19 @@ struct MarvelListCellView: View {
     // MARK: - Body
     
     var body: some View {
-        HStack {
-            ImageLoaderView(url: URL(string: character.thumbnailURL()), placeholder: self.getPlaceHolder) { uiImage in
-                self.getImage(uiImage: uiImage)
+        NavigationLink(
+            destination:
+                MarvelDetailView(characterId: character.id)
+        ) {
+            HStack {
+                ImageLoaderView(url: URL(string: character.thumbnailURL()), placeholder: self.getPlaceHolder) { uiImage in
+                    self.getImage(uiImage: uiImage)
+                }
+                .foregroundColor(Color.black)
+                Text(character.name)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Color.black)
             }
-            Text(character.name)
-                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

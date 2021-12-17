@@ -28,17 +28,21 @@ struct MarvelListView: View {
                 self.getSuccessList(data: data)
             }
         }
-        .onAppear(perform: self.viewModel.onAppear)
+        .navigationTitle("marvelList_title".localize)
     }
 }
 
 extension MarvelListView {
     
     var placeholder: some View {
-        self.getList(
-            isPlaceholder: true,
-            data: CharacterEntity.getMockList()
-        )
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                ForEach(CharacterEntity.getMockList(), id: \.id) { element in
+                    MarvelListCellView(character: element)
+                }
+            }
+            .redacted(reason: .placeholder)
+        }
     }
     
     func getFailedView(error: ErrorEntity) -> some View {
@@ -51,21 +55,19 @@ extension MarvelListView {
     }
     
     func getSuccessList(data: [CharacterEntity]) -> some View {
-        ScrollView {
-            self.getList(isPlaceholder: false, data: data)
-        }
-    }
-    
-    func getList(isPlaceholder: Bool, data: [CharacterEntity]) -> some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 0) {
+        ScrollViewOffset {
+            LazyVStack(alignment: .leading, spacing: 0) {
                 ForEach(data, id: \.id) { element in
                     MarvelListCellView(character: element)
+                        .onAppear {
+                            if data[data.count-10].id == element.id {
+                                self.viewModel.onEndReached()
+                            }
+                        }
                 }
             }
-            .if(isPlaceholder) { view in
-                view.redacted(reason: .placeholder)
-            }
+        } onOffsetChange: {
+            self.viewModel.onRefresh(offset: Float($0))
         }
     }
 }
