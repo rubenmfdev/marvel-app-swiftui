@@ -35,20 +35,11 @@ class MarvelListViewModel: ObservableObject {
 
 // MARK: - Public methods
 extension MarvelListViewModel {
-    func onRefresh(offset: Float) {
-        if !self.state.isSuccess() {
-            return
-        }
-        if offset > 20 {
-            self.isPullingToRefresh = true
-        } else if offset == 0 && self.isPullingToRefresh {
-            self.state = .loading
-            self.resetCharacters()
-            self.loadCharacters()
-            self.isPullingToRefresh = false
-        } else {
-            // Nothing to do
-        }
+    func onPullToRefresh() {
+        self.state = .loading
+        self.resetCharacters()
+        self.loadCharacters()
+        self.isPullingToRefresh = false
     }
     
     func onEndReached() {

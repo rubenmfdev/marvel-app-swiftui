@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterEntity {
+struct CharacterEntity: Identifiable {
     var id: Int
     var name: String
     var characterDescription: String

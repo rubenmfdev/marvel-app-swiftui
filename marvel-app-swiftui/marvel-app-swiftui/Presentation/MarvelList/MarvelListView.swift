@@ -55,19 +55,12 @@ extension MarvelListView {
     }
     
     func getSuccessList(data: [CharacterEntity]) -> some View {
-        ScrollViewOffset {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(data, id: \.id) { element in
-                    MarvelListCellView(character: element)
-                        .onAppear {
-                            if data[data.count-10].id == element.id {
-                                self.viewModel.onEndReached()
-                            }
-                        }
-                }
-            }
-        } onOffsetChange: {
-            self.viewModel.onRefresh(offset: Float($0))
+        InfiniteScrollView(
+            data: data,
+            onEndReached: self.viewModel.onEndReached,
+            onPullToRefresh: self.viewModel.onPullToRefresh
+        ) { element in
+            MarvelListCellView(character: element)
         }
     }
 }
