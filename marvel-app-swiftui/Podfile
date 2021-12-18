@@ -11,6 +11,7 @@ end
 
 def app_pods
   pod 'SkeletonView', '~> 1.17.2'
+  pod 'lottie-ios'
 end
 
 target 'marvel-app-swiftui' do

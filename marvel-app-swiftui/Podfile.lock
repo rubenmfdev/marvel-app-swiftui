@@ -2,12 +2,14 @@ PODS:
   - Alamofire (5.4.3)
   - IQKeyboardManagerSwift (6.5.6)
   - Localize-Swift (3.1.0)
+  - lottie-ios (3.3.0)
   - SkeletonView (1.17.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
   - IQKeyboardManagerSwift (~> 6.5)
   - Localize-Swift (~> 3.1.0)
+  - lottie-ios
   - SkeletonView (~> 1.17.2)
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - Alamofire
     - IQKeyboardManagerSwift
     - Localize-Swift
+    - lottie-ios
     - SkeletonView
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Localize-Swift: 4bed4f0ccac8be2ec3517ee359da80ba2adb0fae
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   SkeletonView: 7aba21d10df8d0530189379ebe02e02a192d8132
 
-PODFILE CHECKSUM: f7b43be9ca9f0241e26a0d24a253f7136e55ab64
+PODFILE CHECKSUM: 56522a248b8c10432b80e7c4ff97961ae262c939
 
 COCOAPODS: 1.10.0

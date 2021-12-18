@@ -9,10 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // MARK: - Attributes
+    
+    @StateObject var mainViewModel = MainViewModel()
+    
+    // MARK: - Body
+
     var body: some View {
         NavigationView {
-            MarvelListView()
+            if self.mainViewModel.splashShowed {
+                MarvelListView()
+            } else {
+                SplashView()
+            }
         }
+        .environmentObject(self.mainViewModel)
     }
 }
 
