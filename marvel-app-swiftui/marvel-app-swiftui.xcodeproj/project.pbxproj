@@ -10,7 +10,9 @@
 		1E3F43096DC5EADA8896920A /* Pods_marvel_app_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2844E81979DFF9F5A81E0C19 /* Pods_marvel_app_swiftuiTests.framework */; };
 		97BED4F9FCC05DBA3929A1BC /* Pods_marvel_app_swiftui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021586AA8F433997B291DC4 /* Pods_marvel_app_swiftui.framework */; };
 		DB0CC8EA276CD94100669857 /* InfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0CC8E9276CD94100669857 /* InfiniteScrollView.swift */; };
-		DB2CAD75276B685C00723B95 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD74276B685B00723B95 /* AsyncImage.swift */; };
+		DB2A2E35276DF31200ADA2F8 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A2E34276DF31200ADA2F8 /* AsyncImageView.swift */; };
+		DB2A2E37276DFAAD00ADA2F8 /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A2E36276DFAAD00ADA2F8 /* FontModifier.swift */; };
+		DB2CAD75276B685C00723B95 /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD74276B685B00723B95 /* ImageLoaderView.swift */; };
 		DB2CAD77276B72F600723B95 /* MarvelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD76276B72F600723B95 /* MarvelDetailView.swift */; };
 		DB2CAD79276B7CC900723B95 /* ScrollViewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2CAD78276B7CC900723B95 /* ScrollViewOffset.swift */; };
 		DB4CCB2E267F5173007C3CF8 /* marvel_app_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB2D267F5173007C3CF8 /* marvel_app_swiftuiApp.swift */; };
@@ -114,7 +116,9 @@
 		4FD9B60E948D2102C541323C /* Pods-marvel-app-swiftui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-app-swiftui.debug.xcconfig"; path = "Target Support Files/Pods-marvel-app-swiftui/Pods-marvel-app-swiftui.debug.xcconfig"; sourceTree = "<group>"; };
 		B021586AA8F433997B291DC4 /* Pods_marvel_app_swiftui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvel_app_swiftui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0CC8E9276CD94100669857 /* InfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollView.swift; sourceTree = "<group>"; };
-		DB2CAD74276B685B00723B95 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		DB2A2E34276DF31200ADA2F8 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		DB2A2E36276DFAAD00ADA2F8 /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		DB2CAD74276B685B00723B95 /* ImageLoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
 		DB2CAD76276B72F600723B95 /* MarvelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailView.swift; sourceTree = "<group>"; };
 		DB2CAD78276B7CC900723B95 /* ScrollViewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffset.swift; sourceTree = "<group>"; };
 		DB4CCB2A267F5173007C3CF8 /* marvel-app-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-app-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +462,7 @@
 				DB4CCBAA267F5B3A007C3CF8 /* Coordinator.swift */,
 				DB4CCBAB267F5B3A007C3CF8 /* Configuration.swift */,
 				DBF8F162273E74FB0008E357 /* ErrorEntity.swift */,
+				DB2A2E36276DFAAD00ADA2F8 /* FontModifier.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -528,9 +533,10 @@
 			isa = PBXGroup;
 			children = (
 				DB2CAD7A276B81DF00723B95 /* ScrollViewOffset */,
-				DB2CAD74276B685B00723B95 /* AsyncImage.swift */,
+				DB2CAD74276B685B00723B95 /* ImageLoaderView.swift */,
 				DB7EEEA72746A8F500FD5885 /* Loader */,
 				DB0CC8E9276CD94100669857 /* InfiniteScrollView.swift */,
+				DB2A2E34276DF31200ADA2F8 /* AsyncImageView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -795,6 +801,7 @@
 				DB4CCBD5267F5B3A007C3CF8 /* BaseRouter.swift in Sources */,
 				DB4CCBD1267F5B3A007C3CF8 /* UrlEntity.swift in Sources */,
 				DB4CCBBE267F5B3A007C3CF8 /* EventListDTO.swift in Sources */,
+				DB2A2E35276DF31200ADA2F8 /* AsyncImageView.swift in Sources */,
 				DB4CCBE0267F5B3A007C3CF8 /* CustomUIImageView.swift in Sources */,
 				DB4CCBB6267F5B3A007C3CF8 /* UrlDTO.swift in Sources */,
 				DB4CCBB4267F5B3A007C3CF8 /* EventSummaryDTO.swift in Sources */,
@@ -816,7 +823,7 @@
 				DB4CCBBF267F5B3A007C3CF8 /* ComicSummaryDTO.swift in Sources */,
 				DB4CCBE2267F5B3A007C3CF8 /* Coordinator.swift in Sources */,
 				DB4CCBBB267F5B3A007C3CF8 /* ImageDTO.swift in Sources */,
-				DB2CAD75276B685C00723B95 /* AsyncImage.swift in Sources */,
+				DB2CAD75276B685C00723B95 /* ImageLoaderView.swift in Sources */,
 				DB4CCB2E267F5173007C3CF8 /* marvel_app_swiftuiApp.swift in Sources */,
 				DB4CCBC5267F5B3A007C3CF8 /* CharacterFilterEntity.swift in Sources */,
 				DB89AEC02760FE1200C9B5E9 /* View+Conditionals.swift in Sources */,
@@ -829,6 +836,7 @@
 				DB2CAD79276B7CC900723B95 /* ScrollViewOffset.swift in Sources */,
 				DB4CCBCD267F5B3A007C3CF8 /* CharacterEntity.swift in Sources */,
 				DB4CCC27267F5E09007C3CF8 /* MarvelListViewModel.swift in Sources */,
+				DB2A2E37276DFAAD00ADA2F8 /* FontModifier.swift in Sources */,
 				DB2CAD77276B72F600723B95 /* MarvelDetailView.swift in Sources */,
 				DB4CCBBA267F5B3A007C3CF8 /* CharacterDTO.swift in Sources */,
 				DB4CCBC8267F5B3A007C3CF8 /* CharacterDataContainerEntity.swift in Sources */,

@@ -13,7 +13,8 @@ struct MarvelDetailView: View {
     // MARK: - Attributes
     
     @ObservedObject var viewModel: MarvelDetailViewModel
-
+    private let imageSize: CGFloat = 300
+    
     // MARK: - Initializers
     
     init(characterId: Int) {
@@ -66,7 +67,26 @@ extension MarvelDetailView {
     }
     
     func getView(isPlaceholder: Bool, data: CharacterEntity) -> some View {
-        Image(Constants.Images.comicPlaceholderName)
+        VStack(spacing: 20) {
+            AsyncImageView(
+                urlString: data.thumbnailURL(),
+                placeholderName: Constants.Images.comicPlaceholderName,
+                imageHeight: self.imageSize
+            )
+            .foregroundColor(Color.black)
+            Group {
+                Text(data.name)
+                    .customFont(.h1)
+                Text(data.characterDescription)
+                    .customFont(.label)
+            }
+            .padding(.horizontal, 20)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .if(isPlaceholder) { view in
+            view.redacted(reason: .placeholder)
+        }
     }
 }
 

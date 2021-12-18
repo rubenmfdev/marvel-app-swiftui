@@ -19,6 +19,20 @@ struct CharacterDTO: Decodable {
     var stories: StoryListDTO?
     var events: EventListDTO?
     var series: SeriesListDTO?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case characterDescription = "description"
+        case modified
+        case resourceURI
+        case urls
+        case thumbnail
+        case comics
+        case stories
+        case events
+        case series
+    }
 }
 
 extension CharacterDTO {

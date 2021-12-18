@@ -12,9 +12,9 @@ struct ImageDTO: Decodable {
     var imageExtension: String?
     
     enum CodingKeys: String, CodingKey {
-            case path
-            case imageExtension = "extension"
-        }
+        case path
+        case imageExtension = "extension"
+    }
 }
 
 extension ImageDTO {

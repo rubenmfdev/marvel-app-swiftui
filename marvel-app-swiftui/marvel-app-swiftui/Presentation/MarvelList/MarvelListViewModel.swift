@@ -16,13 +16,12 @@ class MarvelListViewModel: ObservableObject {
 
     // MARK: - Attributes
 
-    var characters: [CharacterEntity] = []
-    var getCharactersUseCase: GetCharactersUseCaseProtocol
-    var filter: CharacterFilterEntity = CharacterFilterEntity()
-    var isLoadingData: Bool = false
-    var hasMoreData: Bool = true
+    private var characters: [CharacterEntity] = []
+    private var getCharactersUseCase: GetCharactersUseCaseProtocol
+    private var filter: CharacterFilterEntity = CharacterFilterEntity()
+    private var isLoadingData: Bool = false
+    private var hasMoreData: Bool = true
     private var cancellables = Set<AnyCancellable>()
-    var isPullingToRefresh = false
 
     // MARK: - Initializer
     
@@ -39,7 +38,6 @@ extension MarvelListViewModel {
         self.state = .loading
         self.resetCharacters()
         self.loadCharacters()
-        self.isPullingToRefresh = false
     }
     
     func onEndReached() {
