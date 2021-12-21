@@ -63,7 +63,6 @@ extension MarvelDetailView {
             isPlaceholder: false,
             data: data
         )
-
     }
     
     func getView(isPlaceholder: Bool, data: CharacterEntity) -> some View {
@@ -77,7 +76,7 @@ extension MarvelDetailView {
             Group {
                 Text(data.name)
                     .customFont(.h1)
-                Text(data.characterDescription)
+                Text(self.getDescription(character: data))
                     .customFont(.label)
             }
             .padding(.horizontal, 20)
@@ -86,6 +85,14 @@ extension MarvelDetailView {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .if(isPlaceholder) { view in
             view.redacted(reason: .placeholder)
+        }
+    }
+    
+    func getDescription(character: CharacterEntity) -> String {
+        if character.characterDescription == ""{
+            return "marvelDetail_descriptionLabel_default".localize
+        } else {
+            return character.characterDescription
         }
     }
 }

@@ -24,7 +24,7 @@ enum AuthType: Int {
             return [:]
         case .marvel:
             let timestamp = String(Date().timeIntervalSince1970)
-            return ["apikey": "91716016929e144c5f696e0bb2acdc25",
+            return ["apikey": "ADD_API_KEY",
                     "ts": timestamp,
                     "hash": self.getHash(params: ["timestamp": timestamp])
             ]

@@ -24,7 +24,6 @@
 		DB4CCB4B267F5175007C3CF8 /* marvel_app_swiftuiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB4A267F5175007C3CF8 /* marvel_app_swiftuiUITests.swift */; };
 		DB4CCBAC267F5B3A007C3CF8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4CCB5C267F5B3A007C3CF8 /* Localizable.strings */; };
 		DB4CCBAD267F5B3A007C3CF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4CCB5F267F5B3A007C3CF8 /* Assets.xcassets */; };
-		DB4CCBAE267F5B3A007C3CF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4CCB60267F5B3A007C3CF8 /* LaunchScreen.storyboard */; };
 		DB4CCBAF267F5B3A007C3CF8 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4CCB65267F5B3A007C3CF8 /* Config.plist */; };
 		DB4CCBB2267F5B3A007C3CF8 /* CharactersNetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB6C267F5B3A007C3CF8 /* CharactersNetworkDataSource.swift */; };
 		DB4CCBB3267F5B3A007C3CF8 /* CharactersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CCB6E267F5B3A007C3CF8 /* CharactersRouter.swift */; };
@@ -140,7 +139,6 @@
 		DB4CCB5D267F5B3A007C3CF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB4CCB5E267F5B3A007C3CF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB4CCB5F267F5B3A007C3CF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DB4CCB61267F5B3A007C3CF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4CCB62267F5B3A007C3CF8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB4CCB63267F5B3A007C3CF8 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB4CCB65267F5B3A007C3CF8 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 				DBAECCA7276E1A7C0076D52B /* Lotties */,
 				DB4CCB5C267F5B3A007C3CF8 /* Localizable.strings */,
 				DB4CCB5F267F5B3A007C3CF8 /* Assets.xcassets */,
-				DB4CCB60267F5B3A007C3CF8 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -717,7 +714,6 @@
 				DB4CCBAC267F5B3A007C3CF8 /* Localizable.strings in Resources */,
 				DBAECCA9276E1A8B0076D52B /* ironMan.json in Resources */,
 				DB4CCBAD267F5B3A007C3CF8 /* Assets.xcassets in Resources */,
-				DB4CCBAE267F5B3A007C3CF8 /* LaunchScreen.storyboard in Resources */,
 				DB4CCBAF267F5B3A007C3CF8 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -946,14 +942,6 @@
 				DB4CCB63267F5B3A007C3CF8 /* ca */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		DB4CCB60267F5B3A007C3CF8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB4CCB61267F5B3A007C3CF8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
